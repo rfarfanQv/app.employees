@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <app-area [todos]="getTotalEmpleados()" [desarrollo]="getTotalDesarrollo()"
+    [automatizacion]="getTotalAutomatizacion()" [ventas]="getTotalVentas()" [aprendiz]="getTotalAprendiz()"
+    (countRadioButtonChange)="empleadoCountRadioButtonChange($event)"></app-area>
+
+  <div class="card mt-3">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>CI</th>
+            <th>NAME</th>
+            <th>LASTNAME</th>
+            <th>AREA</th>
+            <th>ADDRESS</th>
+            <th>PHONE</th>
+            <th>MAIL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let employee of employees">
+            <tr *ngIf="radioButtonSeleccionado == 'Todos' || radioButtonSeleccionado == employee.area ">
+              <td>{{ employee.ci }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.lastName }}</td>
+              <td>{{ employee.area }}</td>
+              <td>{{ employee.address }}</td>
+              <td>{{ employee.phone }}</td>
+              <td>{{ employee.mail }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

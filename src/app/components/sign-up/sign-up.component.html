@@ -1,0 +1,72 @@
+<div class="container">
+<h1>Formulario de contacto</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+        <div class="mb-4">
+            <label for="ci" class="form-label">Documento de Identidad</label>
+            <input type="number" class="form-control" id="ci" name="ci" required formControlName="ci">
+            <div *ngIf="contactForm.get('ci')?.touched && contactForm.get('ci')?.errors?.['required']"
+                class="alert alert-danger">Este campo es obligatorio
+            </div>
+            <div *ngIf="contactForm.get('ci')?.touched && contactForm.get('ci')?.errors?.['minlength']"
+                class="alert alert-danger">El nombre debe tener al menos
+                {{ contactForm.get('ci')?.errors?.['minlength']?.requiredLength}} digitos.
+            </div>
+    </div>
+    <div class="mb-4">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="name" name="name" required formControlName="name">
+      <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']"
+        class="alert alert-danger">Este campo es obligatorio</div>
+      <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']"
+        class="alert alert-danger">El nombre debe tener al menos
+        {{ contactForm.get('name')?.errors?.['minlength']?.requiredLength}} caracteres.</div>
+    </div>
+    <div class="mb-4">
+      <label for="name" class="form-label">Apellido</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" required formControlName="lastName">
+      <div *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.errors?.['required']"
+        class="alert alert-danger">Este campo es obligatorio</div>
+      <div *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.errors?.['minlength']"
+        class="alert alert-danger">El apellido debe tener al menos
+        {{ contactForm.get('lastName')?.errors?.['minlength']?.requiredLength}} caracteres.</div>
+    </div>
+    <div class="mb-4">
+        <label for="name" class="form-label">Area</label>
+        <select name="area" id="department" class="form-select form-select-sm" formControlName="area">
+          <option selected>Abre el menú</option>
+          <option value="Desarrollo">Desarrollo</option>
+          <option value="Automatizacion">Automatización</option>
+          <option value="Ventas">Ventas</option>
+          <option value="Aprendiz">Aprendiz</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="name" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="address" name="address" required formControlName="address">
+        <div *ngIf="contactForm.get('address')?.touched && contactForm.get('address')?.errors?.['required']"
+          class="alert alert-danger">Este campo es obligatorio</div>
+        <div *ngIf="contactForm.get('address')?.touched && contactForm.get('address')?.errors?.['minlength']"
+          class="alert alert-danger">El apellido debe tener al menos
+          {{ contactForm.get('address')?.errors?.['minlength']?.requiredLength}} caracteres.</div>
+    </div>
+    <div class="mb-4">
+      <label for="name" class="form-label">Telefono</label>
+      <input type="number" class="form-control" id="phone" name="phone" required formControlName="phone">
+      <div *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['required']"
+        class="alert alert-danger">Este campo es obligatorio.</div>
+        <div *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['minlength']"
+          class="alert alert-danger">El telefono debe tener al menos
+          {{ contactForm.get('phone')?.errors?.['minlength']?.requiredLength}} digitos.</div>
+    </div>
+   
+    <div class="mb-4">
+      <label for="name" class="form-label">Correo Electrónico</label>
+      <input type="email" class="form-control" id="mail" name="mail" required formControlName="mail">
+      <div *ngIf="contactForm.get('mail')?.touched && contactForm.get('mail')?.errors?.['email']"
+        class="alert alert-danger">Correo incorrecto</div>
+      <div class="d-grid gap-2 col-4 float-end">
+        <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
